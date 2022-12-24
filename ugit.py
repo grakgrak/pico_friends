@@ -28,7 +28,7 @@ repository = 'pico_friends'
 
 # Don't remove ugit.py from the ignore_files unless you know what you are doing :D
 # Put the files you don't want deleted or updated here use '/filename.ext'
-ignore_files = ['/ugit.py', '/wifi.creds', '/secrets.py','/lib/mqtt_as.py','/lib/neopixel.py','/lib/phew/dns.py','/lib/phew/logging.py','/lib/phew/ntp.py','/lib/phew/server.py','/lib/phew/template.py','/lib/phew/__init__.py'] #, '/boot.py']
+ignore_files = ['/ugit.py', '/wifi.creds', '/secrets.py', '/boot.py', '/lib/mqtt_as.py','/lib/neopixel.py','/lib/phew/dns.py','/lib/phew/logging.py','/lib/phew/ntp.py','/lib/phew/server.py','/lib/phew/template.py','/lib/phew/__init__.py'] #, '/boot.py']
 ignore = ignore_files
 ### -----------END OF USER VARIABLES ----------####
 
