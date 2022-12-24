@@ -34,7 +34,7 @@ def message_handler(topic: bytearray, msg: bytearray, retained: int):
         rgb_str = msg.split()[0].decode()
         rgb = tuple(map(int, rgb_str.split(',')))
         button.setRGB(rgb)
-    if topic == mqtt.MQTT_TOPIC + '/reset:
+    if topic == mqtt.MQTT_TOPIC + '/reset':
         machine.reset()
 
 async def button_check():
