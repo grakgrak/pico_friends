@@ -2,6 +2,7 @@ import captive
 import gc
 import machine
 import mqtt
+import secrets
 import time
 import uasyncio as asyncio
 from button import Button
@@ -35,7 +36,8 @@ def message_handler(topic: bytearray, msg: bytearray, retained: int):
         rgb = tuple(map(int, rgb_str.split(',')))
         button.setRGB(rgb)
     if topic == mqtt.MQTT_TOPIC + '/reset':
-        machine.reset()
+        if msg.decode() == secrets.RESET_MESSAGE:
+            machine.reset()
 
 async def button_check():
     while True:
