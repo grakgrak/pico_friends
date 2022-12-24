@@ -51,6 +51,7 @@ async def up(client):  # Respond to connectivity being (re)established
         mac = binascii.hexlify(client._sta_if.config('mac'),':').decode()
         ntp.fetch() # get the current time from NTP
         await client.subscribe(MQTT_TOPIC, 1)  # renew subscriptions
+        await client.subscribe(MQTT_TOPIC + '/reset', 1)  # renew subscriptions
         
 async def down(client):
     global outages

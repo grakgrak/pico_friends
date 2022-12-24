@@ -1,7 +1,7 @@
 import time
 import machine
 from machine import Pin
-from neopixel import Neopixel
+from lib.neopixel import Neopixel
 
 BRIGHTNESS = 128
 

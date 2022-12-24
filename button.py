@@ -1,7 +1,7 @@
 import mqtt
 import time
 from machine import Pin
-from neopixel import Neopixel
+from lib.neopixel import Neopixel
 from statemachine import StateMachine
 
 BRIGHTNESS = 128

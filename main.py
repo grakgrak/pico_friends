@@ -6,9 +6,9 @@ import time
 import uasyncio as asyncio
 from button import Button
 from reboot_button import RebootButton
-from neopixel import Neopixel
+from lib.neopixel import Neopixel
 from machine import Pin
-from mqtt_as import MQTTClient
+from lib.mqtt_as import MQTTClient
 
 BRIGHTNESS = 200
 FADE_SECONDS = 60
@@ -34,6 +34,8 @@ def message_handler(topic: bytearray, msg: bytearray, retained: int):
         rgb_str = msg.split()[0].decode()
         rgb = tuple(map(int, rgb_str.split(',')))
         button.setRGB(rgb)
+    if topic == mqtt.MQTT_TOPIC + '/reset:
+        machine.reset()
 
 async def button_check():
     while True:
