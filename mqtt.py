@@ -1,4 +1,5 @@
 import machine
+import secrets
 import time
 import uasyncio as asyncio
 import ubinascii as binascii
@@ -7,10 +8,10 @@ from phew import ntp
 from credentials import Creds
 
 TEST_TOPIC = 'first-test'
-MQTT_TOPIC = 'friends/amelia'
-MQTT_USERNAME = b'friends'
-MQTT_PASSWORD = b'Fr13nds.'
-MQTT_BROKER = b'799fc682e5d548da9335ee48f79b2986.s2.eu.hivemq.cloud'
+MQTT_TOPIC = secrets.MQTT_TOPIC
+MQTT_USERNAME = secrets.MQTT_USERNAME
+MQTT_PASSWORD = secrets.MQTT_PASSWORD
+MQTT_BROKER = secrets.MQTT_BROKER
 
 creds = Creds()
 creds.load()
@@ -50,7 +51,6 @@ async def up(client):  # Respond to connectivity being (re)established
         mac = binascii.hexlify(client._sta_if.config('mac'),':').decode()
         ntp.fetch() # get the current time from NTP
         await client.subscribe(MQTT_TOPIC, 1)  # renew subscriptions
-        await client.subscribe(TEST_TOPIC, 1)  # renew subscriptions
         
 async def down(client):
     global outages
